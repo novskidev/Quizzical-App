@@ -16,7 +16,7 @@ function IntroPage() {
             <option value="hard">Hard</option>
           </select>
           <button
-            className="bg-secondary mt-4 w-1/2 px-6 py-4 rounded-lg text-white hover:bg-violet-900 "
+            className="bg-blue-900 mt-4 w-1/2 px-6 py-4 rounded-lg text-white hover:bg-secondary font-inter font-medium text-base "
             type="submit"
           >
             Start quiz
