@@ -1,11 +1,8 @@
 import React from "react";
-import { blob1 } from "../assets";
-import { blob2 } from "../assets";
 
 function IntroPage() {
   return (
-    <>
-      <img className="absolute top-0 right-0" src={blob1} alt="" />
+    <div hidden={true}>
       <section>
         <h1 className="m-5 font-bold text-5xl">Quizzical App</h1>
         <form className="flex flex-col items-center gap-3">
@@ -23,8 +20,7 @@ function IntroPage() {
           </button>
         </form>
       </section>
-      <img className="absolute bottom-0 left-0" src={blob2} alt="" />
-    </>
+    </div>
   );
 }
 
