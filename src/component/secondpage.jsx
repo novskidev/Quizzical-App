@@ -10,14 +10,13 @@ function convertHTMLEntity(text) {
   });
 }
 
-const App = ({ hidden }) => {
+const SecondPage = ({ hidden, difficulty }) => {
   const [questions, setQuestions] = useState([]);
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [score, setScore] = useState(0);
   const [submitted, setSubmitted] = useState(false);
 
-  const api = "https://opentdb.com/api.php?amount=5&type=multiple";
-
+  const api = `https://opentdb.com/api.php?amount=5&difficulty=${difficulty}`;
   const fetchQuestions = async () => {
     try {
       const responses = await axios.get(api);
@@ -70,7 +69,7 @@ const App = ({ hidden }) => {
     setSelectedAnswers({});
     setScore(0);
     setSubmitted(false);
-    fetchQuestions(); // Fetch a new set of questions
+    fetchQuestions();
   };
 
   const allQuestionsAnswered =
@@ -79,6 +78,7 @@ const App = ({ hidden }) => {
 
   return (
     <div hidden={hidden}>
+      <p>Selected Difficulty: {difficulty}</p>
       {questions.map((q, index) => (
         <div key={index}>
           <h3>{q.question}</h3>
@@ -136,4 +136,4 @@ const App = ({ hidden }) => {
   );
 };
 
-export default App;
+export default SecondPage;
