@@ -6,7 +6,7 @@ import { blob1 } from "../src/assets";
 import { blob2 } from "../src/assets";
 
 function App() {
-  const [difficulty, setDifficulty] = useState("");
+  const [difficulty, setDifficulty] = useState("easy");
   const [showIntro, setShowintro] = useState(false);
   const [showQuiz, setShowquiz] = useState(true);
 
@@ -18,8 +18,6 @@ function App() {
 
   const handleChange = (e) => {
     setDifficulty(e.target.value);
-    console.log(difficulty)
-    console.log(e.target.value)
   };
 
   return (

@@ -75,10 +75,9 @@ const SecondPage = ({ hidden, difficulty }) => {
   const allQuestionsAnswered =
     questions.length > 0 &&
     Object.keys(selectedAnswers).length === questions.length;
-
   return (
     <div hidden={hidden}>
-      <p>Selected Difficulty: {difficulty}</p>
+      <p>Selected Difficulty: {difficulty.toUpperCase()}</p>
       {questions.map((q, index) => (
         <div key={index}>
           <h3>{q.question}</h3>
