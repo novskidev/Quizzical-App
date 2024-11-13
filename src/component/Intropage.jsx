@@ -1,8 +1,8 @@
 import React from "react";
 
-function IntroPage() {
+function IntroPage({ hidden }) {
   return (
-    <div hidden={true}>
+    <div hidden={hidden}>
       <section>
         <h1 className="m-5 font-bold text-5xl">Quizzical App</h1>
         <form className="flex flex-col items-center gap-3">

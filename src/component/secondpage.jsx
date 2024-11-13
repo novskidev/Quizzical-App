@@ -1,7 +1,16 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const App = () => {
+// Fungsi untuk mengonversi HTML entities
+function convertHTMLEntity(text) {
+  const span = document.createElement("span");
+  return text.replace(/&[#A-Za-z0-9]+;/gi, (entity, position, text) => {
+    span.innerHTML = entity;
+    return span.innerText;
+  });
+}
+
+const App = ({ hidden }) => {
   const [questions, setQuestions] = useState([]);
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [score, setScore] = useState(0);
@@ -17,12 +26,13 @@ const App = () => {
       setQuestions(
         data.map((item) => {
           const allAnswers = [
-            item.correct_answer,
-            ...item.incorrect_answers,
+            convertHTMLEntity(item.correct_answer),
+            ...item.incorrect_answers.map(convertHTMLEntity),
           ].sort(() => Math.random() - 0.5);
 
           return {
             ...item,
+            question: convertHTMLEntity(item.question),
             shuffledAnswer: allAnswers,
           };
         })
@@ -68,7 +78,7 @@ const App = () => {
     Object.keys(selectedAnswers).length === questions.length;
 
   return (
-    <div>
+    <div hidden={hidden}>
       {questions.map((q, index) => (
         <div key={index}>
           <h3>{q.question}</h3>
